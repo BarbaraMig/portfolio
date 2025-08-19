@@ -1,10 +1,16 @@
 package com.alura.forumHub.entities;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +29,7 @@ public class Usuario {
     @JoinColumn(name = "perfil_id", unique = true)
     private Perfil perfil;
 
+
     // Getters e Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -38,4 +45,19 @@ public class Usuario {
 
     public Perfil getPerfil() { return perfil; }
     public void setPerfil(Perfil perfil) { this.perfil = perfil; }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 }

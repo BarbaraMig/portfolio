@@ -1,23 +1,22 @@
 package com.alura.forumHub.dtos;
 
 
-import com.alura.forumHub.entities.Usuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class TopicoDTO {
+public record TopicoDTO() {
 
     @NotBlank(message = "O título é obrigatório")
-    private String titulo;
+    private static String titulo;
 
     @NotBlank(message = "A mensagem é obrigatória")
-    private String mensagem;
+    private static String mensagem;
 
     @NotNull(message = "O ID do autor é obrigatório")
-    private Integer autorId;
+    private static Integer autorId;
 
     @NotNull(message = "O ID do curso é obrigatório")
-    private Integer cursoId;
+    private static Integer cursoId;
 
     // Getters e Setters
     public String getTitulo() {

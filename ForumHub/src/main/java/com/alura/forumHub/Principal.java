@@ -1,13 +1,10 @@
 package com.alura.forumHub;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
     public void executar() {
-        System.out.println("funciona");
-        realizarOpcao();
+        //realizarOpcao();
     }
 
 
